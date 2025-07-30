@@ -74,14 +74,14 @@ const ManageUsers = () => {
       <h2>Manage Users</h2>
 
       <div className="manageuser-form"><form className="create-user-form" onSubmit={handleCreateUser}>
-        <input type="text" name="username" placeholder="Username" value={newUser.username} onChange={handleInputChange} required />
-        <input type="email" name="email" placeholder="Email" value={newUser.email} onChange={handleInputChange} required />
-        <input type="password" name="password" placeholder="Password" value={newUser.password} onChange={handleInputChange} required />
-        <select name="role" value={newUser.role} onChange={handleInputChange}>
+        <div><input type="text" name="username" placeholder="Username" value={newUser.username} onChange={handleInputChange} required /></div>
+        <div><input type="email" name="email" placeholder="Email" value={newUser.email} onChange={handleInputChange} required /></div>
+        <div><input type="password" name="password" placeholder="Password" value={newUser.password} onChange={handleInputChange} required /></div>
+        <div><select name="role" value={newUser.role} onChange={handleInputChange}>
           <option value="student">Student</option>
           <option value="teacher">Teacher</option>
           <option value="admin">Admin</option>
-        </select>
+        </select></div>
         <div className="create-user-button"><button type="submit">Create User</button></div>
       </form></div>
 
