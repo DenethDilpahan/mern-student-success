@@ -1,34 +1,23 @@
-html {
+html{
   scroll-behavior: smooth;
-  box-sizing: border-box;
-}
-
-*, *::before, *::after {
-  box-sizing: inherit;
 }
 
 body {
   margin: 0;
-  padding: 0;
-  width: 100%;
-  min-height: 100vh;
+  scroll-behavior: smooth;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow-x: hidden;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
 }
 
 .page-container {
-  width: 100%;
-  max-width: 1200px; /* For large screens */
-  margin: 0 auto;
-  padding: 1rem;
   animation: fadeIn 1s ease forwards;
   opacity: 0;
 }
@@ -36,83 +25,4 @@ code {
 @keyframes fadeIn {
   to { opacity: 1; }
 }
-
-/* Responsive Grid Fix for Cards */
-.card-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1rem;
-}
-
-/* Tables should scroll on small screens */
-table {
-  width: 100%;
-  border-collapse: collapse;
-  overflow-x: auto;
-  display: block;
-}
-
-th, td {
-  padding: 0.75rem;
-  text-align: left;
-  white-space: nowrap;
-}
-
-/* Forms and Textareas */
-input, select, textarea, button {
-  width: 100%;
-  max-width: 100%;
-  padding: 0.75rem;
-  margin-bottom: 1rem;
-  font-size: 1rem;
-}
-
-textarea {
-  resize: vertical;
-}
-
-/* Scroll container for overflows */
-.scroll-container {
-  overflow-x: auto;
-  width: 100%;
-}
-
-/* Buttons */
-button {
-  cursor: pointer;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  transition: background 0.3s ease;
-}
-
-button:hover {
-  background-color: #0056b3;
-}
-
-/* Mobile Specific Adjustments */
-@media (max-width: 768px) {
-  .admin-inner, .manage-users, .answer-questions-container, .ask-teacher-container, .collaboration-zone-container {
-    padding: 0.5rem;
-  }
-
-  .dashboard-card {
-    padding: 1rem;
-    font-size: 0.9rem;
-  }
-
-  .announcement-form textarea, .answer-form textarea, .ask-teacher-container textarea {
-    width: 100%;
-  }
-
-  table {
-    font-size: 0.9rem;
-  }
-
-  .link-to-mycollab {
-    font-size: 0.9rem;
-  }
-}
-
 
