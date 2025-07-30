@@ -35,7 +35,7 @@ const AboutPage = () => {
         </ol>
         <p>
           This platform is designed to promote self-learning, peer collaboration, and teacher guidance — all in one place.
-          For demonstration purposes, use the test accounts provided on the Home Page.
+          For demonstration purposes, use the test accounts provided on the Login Page.
         </p>
       </section>
 

@@ -47,8 +47,7 @@ function Home() {
 
   return (
     <div className="home-page">
-
-      
+      {/* 
       <section className="demo-info-section">
         <h2>For Demonstration Only</h2>
         <p>Please use the following test accounts to explore the platform:</p>
@@ -68,7 +67,7 @@ function Home() {
         </div>
 
         <Link to="/about" className="learn-more-link">Learn more about this project</Link>
-      </section>
+      </section> */}
 
       {/* Hero Section with Video Background */}
       <section className="hero-section">
