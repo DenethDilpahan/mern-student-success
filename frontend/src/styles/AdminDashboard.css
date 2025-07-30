@@ -129,7 +129,7 @@ textarea {
   margin-bottom: 20px;
 }
 
-.manageuser-form {
+.admin-manageuser-form {
   display: flex;
   flex-direction: row;
 }
