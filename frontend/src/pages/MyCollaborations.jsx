@@ -6,11 +6,12 @@ const MyCollaborations = () => {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
   const token = localStorage.getItem('token');
+  const API_BASE = process.env.REACT_APP_API_BASE;
 
   useEffect(() => {
     const fetchConnections = async () => {
       try {
-        const res = await axios.get('/api/collaborations/my-connections', {
+        const res = await axios.get(`${API_BASE}/api/collaborations/my-connections`, {
           headers: { Authorization: `Bearer ${token}` }
         });
         setPosts(res.data);
@@ -21,7 +22,7 @@ const MyCollaborations = () => {
       }
     };
     fetchConnections();
-  }, [token]);
+  }, [API_BASE, token]);
 
   return (
     <div className="page-container">

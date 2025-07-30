@@ -8,6 +8,7 @@ const ManageUsers = () => {
   const [loading, setLoading] = useState(true);
 
   const token = localStorage.getItem('token');
+  const API_BASE = process.env.REACT_APP_API_BASE;
 
   useEffect(() => {
     fetchUsers();
@@ -15,7 +16,7 @@ const ManageUsers = () => {
 
   const fetchUsers = async () => {
     try {
-      const res = await axios.get('/api/admin/users', {
+      const res = await axios.get(`${API_BASE}/api/admin/users`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setUsers(res.data);
@@ -34,7 +35,7 @@ const ManageUsers = () => {
   const handleCreateUser = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('/api/admin/users', newUser, {
+      await axios.post(`${API_BASE}/api/admin/users`, newUser, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setNewUser({ username: '', email: '', role: 'student', password: '' });
@@ -46,7 +47,7 @@ const ManageUsers = () => {
 
   const handleRoleChange = async (userId, newRole) => {
     try {
-      await axios.patch(`/api/admin/users/${userId}`, { role: newRole }, {
+      await axios.patch(`${API_BASE}/api/admin/users/${userId}`, { role: newRole }, {
         headers: { Authorization: `Bearer ${token}` },
       });
       fetchUsers();
@@ -59,7 +60,7 @@ const ManageUsers = () => {
     if (!window.confirm('Are you sure you want to delete this user?')) return;
 
     try {
-      await axios.delete(`/api/admin/users/${userId}`, {
+      await axios.delete(`${API_BASE}/api/admin/users/${userId}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       fetchUsers();

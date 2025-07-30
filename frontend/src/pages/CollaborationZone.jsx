@@ -8,11 +8,12 @@ const CollaborationZone = () => {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
   const token = localStorage.getItem('token');
+  const API_BASE = process.env.REACT_APP_API_BASE;
 
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const res = await axios.get('/api/collaborations', {
+        const res = await axios.get(`${API_BASE}/api/collaborations`, {
           headers: { Authorization: `Bearer ${token}` }
         });
         setPosts(res.data);
@@ -23,14 +24,14 @@ const CollaborationZone = () => {
       }
     };
     fetchPosts();
-  }, [token]);
+  }, [API_BASE, token]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!postText.trim()) return;
 
     try {
-      const res = await axios.post('/api/collaborations', { postText }, {
+      const res = await axios.post(`${API_BASE}/api/collaborations`, { postText }, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setPosts([res.data, ...posts]);
@@ -42,7 +43,7 @@ const CollaborationZone = () => {
 
   const handleConnect = async (postId) => {
     try {
-      await axios.patch(`/api/collaborations/${postId}/connect`, {}, {
+      await axios.patch(`${API_BASE}/api/collaborations/${postId}/connect`, {}, {
         headers: { Authorization: `Bearer ${token}` }
       });
       alert('Connected successfully!');

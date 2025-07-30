@@ -7,11 +7,12 @@ const AnswerQuestions = () => {
   const [loading, setLoading] = useState(true);
   const [answerInputs, setAnswerInputs] = useState({});
   const token = localStorage.getItem('token');
+  const API_BASE = process.env.REACT_APP_API_BASE;
 
   useEffect(() => {
     const fetchQuestions = async () => {
       try {
-        const res = await axios.get(`/api/questions/all`, {
+        const res = await axios.get(`${API_BASE}/api/questions/all`, {
           headers: { Authorization: `Bearer ${token}` }
         });
         setQuestions(res.data);
@@ -22,7 +23,7 @@ const AnswerQuestions = () => {
       }
     };
     fetchQuestions();
-  }, [token]);
+  }, [API_BASE, token]);
 
   const handleChange = (questionId, value) => {
     setAnswerInputs(prev => ({ ...prev, [questionId]: value }));
@@ -34,7 +35,7 @@ const AnswerQuestions = () => {
     if (!answerText || answerText.trim() === '') return;
 
     try {
-      const res = await axios.patch(`/api/questions/${questionId}/answer`, { answerText }, {
+      const res = await axios.patch(`${API_BASE}/api/questions/${questionId}/answer`, { answerText }, {
         headers: { Authorization: `Bearer ${token}` }
       });
 
@@ -84,4 +85,3 @@ const AnswerQuestions = () => {
 };
 
 export default AnswerQuestions;
-

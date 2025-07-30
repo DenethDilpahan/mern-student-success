@@ -1,18 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import '../styles/AskTeacher.css'
+import '../styles/AskTeacher.css';
 
 const AskTeacher = () => {
   const [questionText, setQuestionText] = useState('');
   const [questions, setQuestions] = useState([]);
   const [loading, setLoading] = useState(true);
   const token = localStorage.getItem('token');
+  const API_BASE = process.env.REACT_APP_API_BASE;
 
-  // Fetch student's questions on load
   useEffect(() => {
     const fetchQuestions = async () => {
       try {
-        const res = await axios.get('/api/questions', {
+        const res = await axios.get(`${API_BASE}/api/questions`, {
           headers: { Authorization: `Bearer ${token}` }
         });
         setQuestions(res.data);
@@ -23,16 +23,14 @@ const AskTeacher = () => {
       }
     };
     fetchQuestions();
-  }, [token]);
+  }, [API_BASE, token]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!questionText.trim()) return;
 
-    const studentID = localStorage.getItem('userId');
-
     try {
-      const res = await axios.post('/api/questions', { questionText }, {
+      const res = await axios.post(`${API_BASE}/api/questions`, { questionText }, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setQuestions([res.data, ...questions]);

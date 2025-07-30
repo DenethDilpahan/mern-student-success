@@ -7,10 +7,11 @@ const PostAnnouncement = () => {
   const [content, setContent] = useState('');
   const [announcements, setAnnouncements] = useState([]);
   const token = localStorage.getItem('token');
+  const API_BASE = process.env.REACT_APP_API_BASE;
 
   const fetchAnnouncements = async () => {
     try {
-      const res = await axios.get('/api/announcements', {
+      const res = await axios.get(`${API_BASE}/api/announcements`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setAnnouncements(res.data);
@@ -24,7 +25,7 @@ const PostAnnouncement = () => {
     if (!title.trim() || !content.trim()) return;
 
     try {
-      const res = await axios.post('/api/announcements', { title, content }, {
+      const res = await axios.post(`${API_BASE}/api/announcements`, { title, content }, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setAnnouncements([res.data, ...announcements]);

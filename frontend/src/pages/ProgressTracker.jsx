@@ -2,36 +2,36 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import '../styles/ProgressTracker.css';
 
-
 const ProgressTracker = () => {
   const [goalText, setGoalText] = useState('');
   const [goals, setGoals] = useState([]);
   const [loading, setLoading] = useState(true);
   const token = localStorage.getItem('token');
+  const BACKEND_URL = process.env.REACT_APP_API_BASE;
 
   useEffect(() => {
     const fetchGoals = async () => {
       try {
-        const res = await axios.get('http://localhost:5000/api/progress', {
+        const res = await axios.get(`${BACKEND_URL}/api/progress`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         setGoals(res.data);
       } catch (error) {
         console.error('Failed to fetch goals:', error.response?.data || error.message);
+        setGoals([]); // Reset to empty array on error
       } finally {
         setLoading(false);
       }
     };
     fetchGoals();
-  }, [token]);
+  }, [token, BACKEND_URL]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!goalText.trim()) return;
 
     try {
-      console.log(goalText);
-      const res = await axios.post('/api/progress', { goalText }, {
+      const res = await axios.post(`${BACKEND_URL}/api/progress`, { goalText }, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setGoals([res.data, ...goals]);
@@ -43,7 +43,7 @@ const ProgressTracker = () => {
 
   const markComplete = async (id) => {
     try {
-      const res = await axios.put(`${process.env.REACT_APP_API_BASE}/api/progress/${id}/complete`, {}, {
+      const res = await axios.put(`${BACKEND_URL}/api/progress/${id}/complete`, {}, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setGoals(goals.map(goal => goal._id === id ? res.data : goal));
@@ -91,19 +91,17 @@ const ProgressTracker = () => {
           <p>No goals yet. Start by adding one above.</p>
         ) : (
           <>
-            {goals.length > 0 && (
-              <div className="progress-bar-container">
-                <div className="progress-bar">
-                  <div className="progress-fill" id="progressFill"></div>
-                </div>
-                <p>
-                  {goals.filter(goal => goal.isCompleted).length} / {goals.length} Goals Completed
-                </p>
+            <div className="progress-bar-container">
+              <div className="progress-bar">
+                <div className="progress-fill" id="progressFill"></div>
               </div>
-            )}
+              <p>
+                {goals.filter(goal => goal.isCompleted).length} / {goals.length} Goals Completed
+              </p>
+            </div>
 
             <ul className="goals-list">
-              {goals.map(({ _id, goalText, isCompleted, createdAt, completedAt }) => (
+              {Array.isArray(goals) && goals.map(({ _id, goalText, isCompleted, createdAt, completedAt }) => (
                 <li key={_id} className={`goal-item ${isCompleted ? 'completed' : ''}`}>
                   <p><strong>Goal:</strong> {goalText}</p>
                   <small>Created: {new Date(createdAt).toLocaleString()}</small>
