@@ -5,11 +5,23 @@ import profileImage from '../assets/profile.jpg';
 const AboutPage = () => {
   return (
     <div className="about-container">
-      <section className="section about">
-        <h2>About This Platform</h2>
+        <section className="section about">
+        <h1>About This Project</h1>
         <p>
-          This platform was built to support students with accessible learning tools, resources,
-          and teacher collaboration.
+          The Student Success Platform is a comprehensive educational tool designed to support students in their academic journey.
+          It offers a variety of features including:
+        </p>
+        <ul>
+          <li>Personalized Study Planner to organize daily tasks</li>
+          <li>Resource Library with subject-wise materials</li>
+          <li>Collaboration Zone to interact and share ideas</li>
+          <li>Ask a Teacher section for direct expert support</li>
+          <li>Progress Tracker to monitor academic goals</li>
+          <li>Admin Dashboard to manage users, results, and announcements</li>
+        </ul>
+        <p>
+          This platform is designed to promote self-learning, peer collaboration, and teacher guidance — all in one place.
+          For demonstration purposes, use the test accounts provided on the Home Page.
         </p>
       </section>
 
