@@ -41,21 +41,23 @@ function App() {
         <Sidebar collapsed={collapsed} toggleSidebar={toggleSidebar} isLoggedIn={isLoggedIn} handleLogout={handleLogout} />
 
         <div className="main-content">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
+          <div className='page-wrapper'>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/register" element={<Register />} />
 
-            <Route path="/planner" element={<ProtectedRoute><StudyPlanner /></ProtectedRoute>} />
-            <Route path="/resources" element={<ProtectedRoute><ResourceLibrary /></ProtectedRoute>} />
-            <Route path="/collaboration" element={<ProtectedRoute><CollaborationZone /></ProtectedRoute>} />
-            <Route path="/ask" element={<ProtectedRoute><AskTeacher /></ProtectedRoute>} />
-            <Route path="/progress" element={<ProtectedRoute><ProgressTracker /></ProtectedRoute>} />
-            <Route path="/about" element={<ProtectedRoute><About /></ProtectedRoute>} />
-            <Route path="/admin" element={<ProtectedRoute allowedRoles={['admin']}><AdminDashboard /></ProtectedRoute>} />
-            <Route path="/answer-questions" element={<ProtectedRoute allowedRoles={['teacher', 'admin']}><AnswerQuestions /></ProtectedRoute>} />
-            <Route path="/my-collaborations" element={<ProtectedRoute><MyCollaborations /></ProtectedRoute>} />
-          </Routes>
+              <Route path="/planner" element={<ProtectedRoute><StudyPlanner /></ProtectedRoute>} />
+              <Route path="/resources" element={<ProtectedRoute><ResourceLibrary /></ProtectedRoute>} />
+              <Route path="/collaboration" element={<ProtectedRoute><CollaborationZone /></ProtectedRoute>} />
+              <Route path="/ask" element={<ProtectedRoute><AskTeacher /></ProtectedRoute>} />
+              <Route path="/progress" element={<ProtectedRoute><ProgressTracker /></ProtectedRoute>} />
+              <Route path="/about" element={<ProtectedRoute><About /></ProtectedRoute>} />
+              <Route path="/admin" element={<ProtectedRoute allowedRoles={['admin']}><AdminDashboard /></ProtectedRoute>} />
+              <Route path="/answer-questions" element={<ProtectedRoute allowedRoles={['teacher', 'admin']}><AnswerQuestions /></ProtectedRoute>} />
+              <Route path="/my-collaborations" element={<ProtectedRoute><MyCollaborations /></ProtectedRoute>} />
+            </Routes>
+          </div>
         </div>
       </div>
     </Router>
