@@ -48,6 +48,28 @@ function Home() {
   return (
     <div className="home-page">
 
+      
+      <section className="demo-info-section">
+        <h2>For Demonstration Only</h2>
+        <p>Please use the following test accounts to explore the platform:</p>
+
+        <div className="demo-accounts">
+          <div className="account-card">
+            <h3>Admin Account</h3>
+            <p><strong>Username:</strong> deneth@gmail.com</p>
+            <p><strong>Password:</strong> Deneth</p>
+          </div>
+
+          <div className="account-card">
+            <h3>Student Account</h3>
+            <p><strong>Username:</strong> nisal@gmail.com</p>
+            <p><strong>Password:</strong> Nisal@Nisal</p>
+          </div>
+        </div>
+
+        <Link to="/about" className="learn-more-link">Learn more about this project</Link>
+      </section>
+
       {/* Hero Section with Video Background */}
       <section className="hero-section">
         <video autoPlay loop muted playsInline className="hero-video">
@@ -147,26 +169,6 @@ function Home() {
         <Link to="/collaboration" className="btn-primary">Go to Collaboration Zone</Link>
       </section>
 
-      <section className="demo-info-section">
-        <h2>For Demonstration Only</h2>
-        <p>Please use the following test accounts to explore the platform:</p>
-
-        <div className="demo-accounts">
-          <div className="account-card">
-            <h3>Admin Account</h3>
-            <p><strong>Username:</strong> adminuser</p>
-            <p><strong>Password:</strong> Admin@123</p>
-          </div>
-
-          <div className="account-card">
-            <h3>Student Account</h3>
-            <p><strong>Username:</strong> studentuser</p>
-            <p><strong>Password:</strong> Student@123</p>
-          </div>
-        </div>
-
-        <Link to="/about" className="learn-more-link">Learn more about this project</Link>
-      </section>
 
       <footer className="footer-section">
         <div className="footer-columns">
