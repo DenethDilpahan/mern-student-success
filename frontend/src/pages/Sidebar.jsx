@@ -1,25 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import '../styles/Sidebar.css';
-
 import {
-  FaHome,
-  FaCalendarAlt,
-  FaBook,
-  FaUsers,
-  FaQuestionCircle,
-  FaChartLine,
-  FaInfoCircle,
-  FaSignInAlt,
-  FaTools,
-  FaComments,
-  FaSignOutAlt,
-  FaBars,
-  FaTimes,
+  FaHome, FaCalendarAlt, FaBook, FaUsers, FaQuestionCircle, FaChartLine,
+  FaInfoCircle, FaSignInAlt, FaTools, FaComments, FaSignOutAlt, FaBars, FaTimes
 } from 'react-icons/fa';
 
-const Sidebar = () => {
-  const [collapsed, setCollapsed] = useState(false);
+const Sidebar = ({ collapsed, toggleSidebar }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem('token'));
   const navigate = useNavigate();
 
@@ -28,13 +15,8 @@ const Sidebar = () => {
     setIsLoggedIn(!!token);
   }, []);
 
-  const toggleSidebar = () => setCollapsed(!collapsed);
-
   const handleLogout = () => {
-    localStorage.removeItem('token');
-    localStorage.removeItem('role');
-    localStorage.removeItem('userId');
-    localStorage.removeItem('username');
+    localStorage.clear();
     setIsLoggedIn(false);
     navigate('/login');
   };
@@ -49,42 +31,39 @@ const Sidebar = () => {
     { to: '/about', label: 'About', icon: <FaInfoCircle /> },
   ];
 
-  if (!isLoggedIn) {
-    navItems.push({ to: '/login', label: 'Login', icon: <FaSignInAlt /> });
-  }
-
-  if (localStorage.getItem('role') === 'admin') {
-    navItems.push({ to: '/admin', label: 'Admin', icon: <FaTools /> });
-  }
-
-  if (['admin', 'teacher'].includes(localStorage.getItem('role'))) {
-    navItems.push({ to: '/answer-questions', label: 'Answer Qs', icon: <FaComments /> });
-  }
+  if (!isLoggedIn) navItems.push({ to: '/login', label: 'Login', icon: <FaSignInAlt /> });
+  if (localStorage.getItem('role') === 'admin') navItems.push({ to: '/admin', label: 'Admin', icon: <FaTools /> });
+  if (['admin', 'teacher'].includes(localStorage.getItem('role'))) navItems.push({ to: '/answer-questions', label: 'Answer Qs', icon: <FaComments /> });
 
   return (
-    <div className={`sidebar ${collapsed ? 'collapsed' : ''}`}>
-      <button className="toggle-btn" onClick={toggleSidebar}>
-        {collapsed ? <FaBars /> : <FaTimes />}
-      </button>
+    <>
+      <div className={`sidebar ${collapsed ? 'collapsed' : ''}`}>
+        <button className="toggle-btn" onClick={toggleSidebar}>
+          {collapsed ? <FaBars /> : <FaTimes />}
+        </button>
 
-      {!collapsed && <h2 className="sidebar-logo">Student Platform</h2>}
+        {!collapsed && <h2 className="sidebar-logo">Student Platform</h2>}
 
-      <nav className="sidebar-nav">
-        {navItems.map((item) => (
-          <Link key={item.to} to={item.to}>
-            <span className="icon">{item.icon}</span>
-            {!collapsed && <span className="label">{item.label}</span>}
-          </Link>
-        ))}
+        <nav className="sidebar-nav">
+          {navItems.map((item) => (
+            <Link key={item.to} to={item.to} onClick={() => collapsed && toggleSidebar()}>
+              <span className="icon">{item.icon}</span>
+              {!collapsed && <span className="label">{item.label}</span>}
+            </Link>
+          ))}
 
-        {isLoggedIn && (
-          <button className="logout-btn" onClick={handleLogout}>
-            <span className="icon"><FaSignOutAlt /></span>
-            {!collapsed && <span className="label">Logout</span>}
-          </button>
-        )}
-      </nav>
-    </div>
+          {isLoggedIn && (
+            <button className="logout-btn" onClick={handleLogout}>
+              <span className="icon"><FaSignOutAlt /></span>
+              {!collapsed && <span className="label">Logout</span>}
+            </button>
+          )}
+        </nav>
+      </div>
+
+      {/* Mobile overlay when sidebar open */}
+      {collapsed && <div className="sidebar-overlay" onClick={toggleSidebar}></div>}
+    </>
   );
 };
 
