@@ -21,7 +21,7 @@ export default function Register() {
     }
 
     try {
-      const response = await fetch("http://192.168.22.10:5000/api/auth/register", {
+      const response = await fetch(`${process.env.REACT_APP_API_BASE}/api/auth/register`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, username, password }),
