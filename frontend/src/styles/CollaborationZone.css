@@ -1,0 +1,116 @@
+.collaboration-zone-container {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #fffdf7;
+  border-radius: 12px;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.08);
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.collaboration-zone-container h1 {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #333;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+textarea {
+  resize: vertical;
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ccd;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  background-color: #fff;
+}
+
+button[type="submit"] {
+  width: fit-content;
+  align-self: flex-end;
+  padding: 8px 16px;
+  background-color: #28a745;
+  color: #fff;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+button[type="submit"]:hover {
+  background-color: #1e7e34;
+}
+
+.posts-list {
+  list-style: none;
+  padding: 0;
+}
+
+.post-item {
+  padding: 15px;
+  background-color: #f9f9f9;
+  border: 1px solid #dde3ea;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+.post-item p {
+  margin: 8px 0;
+}
+
+.post-item strong {
+  color: #1a3b5d;
+}
+
+.post-item small {
+  display: block;
+  color: #777;
+  font-size: 0.85rem;
+}
+
+button {
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+button[type="connect"] {
+  width: fit-content;
+  align-self: flex-end;
+  padding: 8px 16px;
+  background-color: #0077cc;
+  color: #fff;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  font-family: Roboto;
+}
+
+button[type="connect"]:hover {
+  background-color: #0077cc;
+}
+
+.link-to-mycollab {
+  font-family: Roboto;
+  font-size: 15px;
+  text-decoration: none;
+  color: #0077cc;
+  font-weight: 500;
+}
+
+.link-to-mycollab:hover {
+  text-decoration: underline;
+  color: #004475;
+  font-weight: 600;
+}

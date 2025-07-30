@@ -1,0 +1,89 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+  font-family: 'Roboto', sans-serif;
+}
+
+.about-container {
+  width: 100%;
+}
+
+.section {
+  padding: 3rem 2rem;
+  color: white;
+  animation: fadeIn 1.5s ease;
+  padding: 60px 30px;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.section h2 {
+  font-size: 2em;
+  margin-bottom: 15px;
+  border-left: 5px solid white;
+  padding-left: 10px;
+}
+
+.section p {
+  font-size: 1.1em;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.about {
+  background-color: #0a192f;
+  color: white;
+}
+
+.features {
+ background-color: #1e3a8a;
+  color: white;
+}
+
+.mission {
+  background-color: #38bdf8;
+  color: #0a192f;
+}
+
+.credits {
+  background-color: #bae6fd;
+  color: #0a192f;
+}
+
+.credit-box {
+  display: flex;
+  gap: 1rem;
+}
+
+.profile-photo {
+  height: 80px;
+  width: 80px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid white;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 600px) {
+  .credit-box {
+    flex-direction: column;
+  }
+}
+
+button {
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+

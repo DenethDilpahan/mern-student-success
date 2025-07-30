@@ -1,0 +1,201 @@
+body {
+  background: linear-gradient(to top right, #e0f7fa, #ffffff);
+  font-family: 'Roboto', sans-serif;
+}
+
+.page-container {
+  position: relative;
+  overflow-x: hidden;  /* Keep horizontal hidden */
+  overflow-y: auto;  /* Allow vertical scrolling */
+}
+
+.progress-tracker-container {
+  padding: 2.5rem 1.5rem;
+  max-width: 800px;
+  margin: auto;
+  background-color: #ffffffd9;
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.05);
+  position: relative;
+  z-index: 1;
+}
+
+/* Floating Decorative Shapes */
+.page-container::before,
+.page-container::after {
+  content: '';
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  background: rgba(52, 152, 219, 0.1);
+  border-radius: 50%;
+  z-index: 0;
+  animation: float 10s infinite ease-in-out;
+}
+
+.page-container::before {
+  top: -50px;
+  left: -50px;
+  z-index: -1;
+}
+
+.page-container::after {
+  bottom: 60px;
+  right: 50px;
+  z-index: -1;
+}
+
+@keyframes float {
+  0% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(180deg); }
+  100% { transform: translateY(0) rotate(360deg); }
+}
+
+/* Progress Tracker Content Styling */
+.progress-tracker-container h1 {
+  text-align: center;
+  color: #2c3e50;
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+}
+
+/* Reuse your form styles */
+form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+form input {
+  flex: 1 1 300px;
+  padding: 0.6rem 0.8rem;
+  border-radius: 10px;
+  border: 2px solid #3498db;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+form input:focus {
+  outline: none;
+  border-color: #2980b9;
+  box-shadow: 0 0 8px rgba(41, 128, 185, 0.3);
+}
+
+form button {
+  background-color: #3498db;
+  color: white;
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+form button:hover {
+  background-color: #2980b9;
+}
+
+.progress-bar-container {
+  margin: 20px 0;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 20px;
+  background-color: #eee;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #4caf50, #81c784);
+  width: 0;
+  border-radius: 10px;
+}
+
+.goals-list {
+  list-style: none;
+  padding: 0;
+}
+
+.goal-item {
+  background-color: #ffffff;
+  padding: 1.2rem;
+  margin-bottom: 1rem;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.goal-item p {
+  margin: 0.5rem 0;
+  color: #2c3e50;
+}
+
+.goal-item small {
+  display: block;
+  color: #888;
+  margin-bottom: 0.5rem;
+}
+
+.goal-item.completed {
+  background-color: #e8f5e9;
+  color: #2e7d32;
+  border-color: #a5d6a7;
+}
+
+.goal-item.completed p {
+  color: #2e7d32;
+}
+
+.goal-item button {
+  background-color: #27ae60;
+  color: white;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.goal-item button:hover {
+  background-color: #1e8449;
+}
+
+button {
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.goals-list {
+  list-style: none;
+  padding: 0;
+  max-height: none; /* Ensure it doesn't clip content */
+  overflow-y: auto;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;  /* IE & Edge */
+}
+
+.goals-list::-webkit-scrollbar {
+  display: none;  /* Chrome, Safari */
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #4caf50, #81c784);
+  width: 0;
+  border-radius: 10px;
+  transition: width 1.5s ease-out;
+}
+

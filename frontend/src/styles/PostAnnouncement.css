@@ -1,0 +1,37 @@
+.announcement-container {
+  width: 80%;
+  margin: 20px auto;
+  padding: 20px;
+}
+
+.announcement-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.announcement-form input,
+.announcement-form textarea {
+  padding: 10px;
+  font-size: 16px;
+}
+
+.announcement-form button {
+  width: 150px;
+  padding: 10px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.announcement-list {
+  margin-top: 30px;
+  list-style: none;
+  padding: 0;
+}
+
+.announcement-item {
+  background-color: #f1f1f1;
+  padding: 15px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+}

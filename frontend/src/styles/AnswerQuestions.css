@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+.answer-questions-container {
+  padding: 2.5rem 1.5rem;
+  max-width: 900px;
+  margin: auto;
+  font-family: 'Roboto', sans-serif;
+  background-color: #f4f7fa;
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.05);
+}
+
+.answer-questions-container h1 {
+  text-align: center;
+  color: #2c3e50;
+  font-size: 2.4rem;
+  margin-bottom: 2rem;
+}
+
+.question-list {
+  list-style: none;
+  padding: 0;
+}
+
+.question-card {
+  background-color: #ffffff;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  border-radius: 12px;
+  border: 1px solid #dcdcdc;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.question {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  color: #34495e;
+}
+
+.meta {
+  font-size: 0.85rem;
+  color: #888;
+  margin-bottom: 1rem;
+}
+
+.answered {
+  background-color: #e8f5e9;
+  padding: 0.8rem;
+  border-left: 4px solid #27ae60;
+  border-radius: 8px;
+  font-weight: 500;
+  color: #2e7d32;
+}
+
+.answer-form textarea {
+  width: 100%;
+  min-height: 100px;
+  padding: 0.8rem;
+  border: 2px solid #3498db;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-family: 'Roboto', sans-serif;
+  resize: vertical;
+  margin-bottom: 0.8rem;
+}
+
+.answer-form textarea:focus {
+  outline: none;
+  border-color: #2980b9;
+  box-shadow: 0 0 6px rgba(41, 128, 185, 0.3);
+}
+
+.answer-form button {
+  background-color: #3498db;
+  color: white;
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.answer-form button:hover {
+  background-color: #2980b9;
+}
+
+button {
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
