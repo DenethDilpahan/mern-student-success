@@ -73,7 +73,7 @@ const ManageUsers = () => {
     <div className="manage-users">
       <h2>Manage Users</h2>
 
-      <form className="create-user-form" onSubmit={handleCreateUser}>
+      <div className="manageuser-form"><form className="create-user-form" onSubmit={handleCreateUser}>
         <input type="text" name="username" placeholder="Username" value={newUser.username} onChange={handleInputChange} required />
         <input type="email" name="email" placeholder="Email" value={newUser.email} onChange={handleInputChange} required />
         <input type="password" name="password" placeholder="Password" value={newUser.password} onChange={handleInputChange} required />
@@ -83,7 +83,7 @@ const ManageUsers = () => {
           <option value="admin">Admin</option>
         </select>
         <div className="create-user-button"><button type="submit">Create User</button></div>
-      </form>
+      </form></div>
 
       {loading ? (
         <p>Loading users...</p>

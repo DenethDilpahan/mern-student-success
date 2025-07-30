@@ -13,41 +13,6 @@
   margin-left: 60px;
 }
 
-.page-wrapper {
-  max-width: 1200px;
-  width: 100%;
-  margin: auto;
-}
-
-/* For Forms (Admin Panels, Progress Tracker, etc.) */
-form {
-  max-width: 600px;
-  margin: auto;
-}
-
-/* Input fields inside forms */
-form input,
-form textarea {
-  width: 100%;
-  max-width: 500px;
-}
-
-/* Buttons */
-button {
-  max-width: 200px;
-  width: auto;
-}
-
-/* Progress Tracker Specific Adjustments */
-.progress-tracker-container form input {
-  width: calc(100% - 150px);  /* Adjust width leaving space for the button */
-  max-width: 400px;
-}
-
-.progress-tracker-container form button {
-  width: 120px;
-}
-
 
 @media (max-width: 768px) {
   .main-content {
