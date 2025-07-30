@@ -6,22 +6,24 @@ const StudyPlanner = () => {
   const [tasks, setTasks] = useState([]);
   const [newTask, setNewTask] = useState({ title: '', subject: '', date: '' });
   const token = localStorage.getItem('token');
+  const BACKEND_URL = process.env.REACT_APP_API_BASE;
 
   // Load tasks on mount
   useEffect(() => {
     const fetchTasks = async () => {
       try {
-        const res = await axios.get('/api/tasks', {
+        const res = await axios.get(`${BACKEND_URL}/api/tasks`, {
           headers: { Authorization: `Bearer ${token}` }
         });
         setTasks(res.data);
       } catch (err) {
         console.error('Failed to fetch tasks:', err.response?.data || err.message);
+        setTasks([]); // Reset to empty array on error
       }
     };
 
     fetchTasks();
-  }, [token]);
+  }, [token, BACKEND_URL]);
 
   const handleChange = (e) => {
     setNewTask({ ...newTask, [e.target.name]: e.target.value });
@@ -32,7 +34,7 @@ const StudyPlanner = () => {
     if (!title || !subject || !date) return;
 
     try {
-      const res = await axios.post('/api/tasks', newTask, {
+      const res = await axios.post(`${BACKEND_URL}/api/tasks`, newTask, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setTasks([...tasks, res.data]);
@@ -44,7 +46,7 @@ const StudyPlanner = () => {
 
   const toggleDone = async (id) => {
     try {
-      const res = await axios.patch(`/api/tasks/${id}`, {}, {
+      const res = await axios.patch(`${BACKEND_URL}/api/tasks/${id}`, {}, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setTasks(tasks.map((t) => (t._id === id ? res.data : t)));
@@ -55,7 +57,7 @@ const StudyPlanner = () => {
 
   const deleteTask = async (id) => {
     try {
-      await axios.delete(`/api/tasks/${id}`, {
+      await axios.delete(`${BACKEND_URL}/api/tasks/${id}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setTasks(tasks.filter((t) => t._id !== id));
@@ -77,17 +79,21 @@ const StudyPlanner = () => {
         </div>
 
         <ul className="task-list">
-          {tasks.map((task) => (
-            <li key={task._id} className={task.done ? 'done' : ''}>
-              <div className="task-info">
-                <strong>{task.title}</strong> ({task.subject}) – {task.date}
-              </div>
-              <div className="task-buttons">
-                <button onClick={() => toggleDone(task._id)}>{task.done ? 'Undo' : 'Done'}</button>
-                <button onClick={() => deleteTask(task._id)}>Delete</button>
-              </div>
-            </li>
-          ))}
+          {Array.isArray(tasks) && tasks.length > 0 ? (
+            tasks.map((task) => (
+              <li key={task._id} className={task.done ? 'done' : ''}>
+                <div className="task-info">
+                  <strong>{task.title}</strong> ({task.subject}) – {task.date}
+                </div>
+                <div className="task-buttons">
+                  <button onClick={() => toggleDone(task._id)}>{task.done ? 'Undo' : 'Done'}</button>
+                  <button onClick={() => deleteTask(task._id)}>Delete</button>
+                </div>
+              </li>
+            ))
+          ) : (
+            <p>No tasks available.</p>
+          )}
         </ul>
       </div>
     </div>
@@ -95,4 +101,3 @@ const StudyPlanner = () => {
 };
 
 export default StudyPlanner;
-
