@@ -131,7 +131,7 @@ textarea {
 
 .admin-manageuser-form {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
 }
 
 .admin-form input,

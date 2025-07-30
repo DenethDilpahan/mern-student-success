@@ -65,18 +65,18 @@ const ManageResults = () => {
   return (
     <div>
       <h2>Manage Results</h2>
-      <form onSubmit={handleSubmit}>
-        <input type="text" placeholder="Student Name" value={studentName} onChange={(e) => setStudentName(e.target.value)} required />
-        <input type="text" placeholder="Subject" value={subject} onChange={(e) => setSubject(e.target.value)} required />
-        <input type="number" placeholder="Marks" value={marks} onChange={(e) => setMarks(e.target.value)} required />
-        <select value={term} onChange={(e) => setTerm(e.target.value)} required>
+      <div className="manageuser-form"><form onSubmit={handleSubmit}>
+        <div><input type="text" placeholder="Student Name" value={studentName} onChange={(e) => setStudentName(e.target.value)} required /></div>
+        <div><input type="text" placeholder="Subject" value={subject} onChange={(e) => setSubject(e.target.value)} required /></div>
+        <div><input type="number" placeholder="Marks" value={marks} onChange={(e) => setMarks(e.target.value)} required /></div>
+        <div><select value={term} onChange={(e) => setTerm(e.target.value)} required>
           <option value="Term 1">Term 1</option>
           <option value="Term 2">Term 2</option>
           <option value="Term 3">Term 3</option>
-        </select>
+        </select></div>
         <input type="number" placeholder="Year" value={year} onChange={(e) => setYear(e.target.value)} required />
         <div><button type="submit">Add Result</button></div>
-      </form>
+      </form></div>
 
       <table>
         <thead>
