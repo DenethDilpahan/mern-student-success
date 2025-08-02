@@ -1,61 +1,107 @@
 import '../styles/Home.css';
 import { Link } from 'react-router-dom';
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import introVideo from '../assets/intro-video.mp4';
 
+gsap.registerPlugin(ScrollTrigger);
+
 function Home() {
+  const heroRef = useRef(null);
+  const featuresRef = useRef(null);
+  const howItWorksRef = useRef(null);
+  const achievementsRef = useRef(null);
+  const getInvolvedRef = useRef(null);
 
   useEffect(() => {
-    const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
+    // Hero animation
+    gsap.fromTo(heroRef.current, 
+      { opacity: 0, scale: 0.95 }, 
+      { opacity: 1, scale: 1, duration: 1.5, ease: 'power2.out' }
+    );
 
-        // Count Up Logic for Stats
-        if (entry.target.classList.contains('achievements')) {
-          const counters = entry.target.querySelectorAll('.count-up');
-          counters.forEach(counter => {
-            const updateCount = () => {
-              const target = +counter.getAttribute('data-target');
-              const current = +counter.innerText;
-
-              const increment = Math.ceil(target / 150); // Adjust speed
-
-              if (current < target) {
-                counter.innerText = current + increment;
-                setTimeout(updateCount, 20);
-              } else {
-                counter.innerText = target + '+';
-              }
-            };
-            updateCount();
-          });
-        }
-      }
+    // Features section scroll animation
+    gsap.from(featuresRef.current, {
+      scrollTrigger: {
+        trigger: featuresRef.current,
+        start: 'top 80%',
+        toggleActions: 'play none none none',
+      },
+      opacity: 0,
+      y: 50,
+      duration: 1,
+      ease: 'power2.out',
     });
-  }, { threshold: 0.2 });
 
+    // How it Works animation (each step)
+    gsap.from(howItWorksRef.current.querySelectorAll('.road-step'), {
+      scrollTrigger: {
+        trigger: howItWorksRef.current,
+        start: 'top 80%',
+      },
+      opacity: 0,
+      y: 50,
+      stagger: 0.3,
+      duration: 1,
+      ease: 'power2.out',
+    });
 
-    const elements = document.querySelectorAll('.animate-on-scroll');
-    elements.forEach(el => observer.observe(el));
+    // Achievements counter and zoom-in
+    const stats = achievementsRef.current.querySelectorAll('.count-up');
+    ScrollTrigger.create({
+      trigger: achievementsRef.current,
+      start: 'top 80%',
+      onEnter: () => {
+        stats.forEach(counter => {
+          const target = +counter.getAttribute('data-target');
+          let count = 0;
+          const increment = Math.ceil(target / 150);
+          const updateCount = () => {
+            if (count < target) {
+              count += increment;
+              counter.innerText = count;
+              requestAnimationFrame(updateCount);
+            } else {
+              counter.innerText = target + '+';
+            }
+          };
+          updateCount();
+        });
 
-    // Cleanup on unmount
-    return () => {
-      elements.forEach(el => observer.unobserve(el));
-    };
+        gsap.to(stats, {
+          scale: 1.2,
+          duration: 0.8,
+          stagger: 0.2,
+          ease: 'back.out(1.7)',
+        });
+      },
+    });
+
+    // Get Involved fade-in
+    gsap.from(getInvolvedRef.current, {
+      scrollTrigger: {
+        trigger: getInvolvedRef.current,
+        start: 'top 80%',
+      },
+      opacity: 0,
+      y: 50,
+      duration: 1,
+      ease: 'power2.out',
+    });
   }, []);
 
   return (
     <div className="home-page">
-      {/* Hero Section with Video Background */}
-      <section className="hero-section">
+      {/* Hero Section */}
+      <section className="hero-section" ref={heroRef}>
         <video autoPlay loop muted playsInline className="hero-video">
           <source src={introVideo} type="video/mp4" />
           Your browser does not support the video tag.
         </video>
 
         <div className="hero-overlay">
-          <div className="hero-content animate-on-scroll">
+          <div className="hero-content">
             <h1>Your Academic Success Begins Here</h1>
             <p>Plan, Learn, Collaborate, and Track with ease using our platform.</p>
             <div className="hero-buttons">
@@ -67,7 +113,7 @@ function Home() {
       </section>
 
       {/* Features Section */}
-      <section className="features-section animate-on-scroll">
+      <section className="features-section" ref={featuresRef}>
         <h2>Platform Features</h2>
         <div className="feature-boxes">
           <Link to="/planner" className="feature-box">
@@ -94,39 +140,26 @@ function Home() {
       </section>
 
       {/* How It Works Section */}
-      <section className="how-it-works animate-on-scroll">
+      <section className="how-it-works" ref={howItWorksRef}>
         <h2>How It Works</h2>
         <div className="roadmap-container">
           <div className="road-line"></div>
-
-          <div className="road-step">
-            <div className="circle">1</div>
-            <div className="step-content">
-              <h3>Plan</h3>
-              <p>Create your personalized study schedule easily.</p>
+          {[1, 2, 3].map(num => (
+            <div key={num} className="road-step">
+              <div className="circle">{num}</div>
+              <div className="step-content">
+                <h3>{num === 1 ? 'Plan' : num === 2 ? 'Learn' : 'Track'}</h3>
+                <p>{num === 1 ? 'Create your personalized study schedule easily.'
+                    : num === 2 ? 'Use resources and ask teachers for help anytime.'
+                    : 'See your progress and celebrate achievements.'}</p>
+              </div>
             </div>
-          </div>
-
-          <div className="road-step">
-            <div className="circle">2</div>
-            <div className="step-content">
-              <h3>Learn</h3>
-              <p>Use resources and ask teachers for help anytime.</p>
-            </div>
-          </div>
-
-          <div className="road-step">
-            <div className="circle">3</div>
-            <div className="step-content">
-              <h3>Track</h3>
-              <p>See your progress and celebrate achievements.</p>
-            </div>
-          </div>
+          ))}
         </div>
       </section>
 
       {/* Achievements Section */}
-      <section className="achievements animate-on-scroll">
+      <section className="achievements" ref={achievementsRef}>
         <h2>Our Impact</h2>
         <div className="stats">
           <div className="stat">
@@ -140,13 +173,13 @@ function Home() {
         </div>
       </section>
 
-      {/* Get Involved */}
-      <section className="get-involved animate-on-scroll">
+      {/* Get Involved Section */}
+      <section className="get-involved" ref={getInvolvedRef}>
         <h2>Join Our Learning Community</h2>
         <Link to="/collaboration" className="btn-primary">Go to Collaboration Zone</Link>
       </section>
 
-
+      {/* Footer */}
       <footer className="footer-section">
         <div className="footer-columns">
           <div className="footer-column">
@@ -169,7 +202,6 @@ function Home() {
             </ul>
           </div>
         </div>
-
         <div className="footer-bottom">
           <div className="footer-socials">
             <a href="#"><i className="fab fa-x-twitter"></i></a>
@@ -178,7 +210,6 @@ function Home() {
             <a href="#"><i className="fab fa-facebook"></i></a>
           </div>
         </div>
-
         <div className="footer-copyright">
           <p>© 2025 Student Success Platform. All rights reserved.</p>
           <div>
@@ -186,7 +217,6 @@ function Home() {
           </div>
         </div>
       </footer>
-
     </div>
   );
 }
