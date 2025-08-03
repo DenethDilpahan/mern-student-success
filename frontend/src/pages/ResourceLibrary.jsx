@@ -52,6 +52,13 @@ export default function ResourceLibrary() {
           </select>
         </div>
 
+        <div className="demo-file">
+          <h2 className="demo-file-title">Demo file</h2>
+          <p>This content is for demonsrattion only.</p>
+          <p>You can upload PDFs, videos, Articles and Audio files here.</p>
+        </div>
+
+
         {loading ? (
           <p>Loading resources...</p>
         ) : resources.length === 0 && grade && subject ? (
