@@ -63,11 +63,11 @@ const Sidebar = ({ collapsed, toggleSidebar }) => {
         </nav>
       </div>
 
-      {/* Overlay for mobile */}
-      <div className="sidebar-overlay" onClick={toggleSidebar}></div>
+      {/* Overlay - MOBILE only */}
+      {isMobile && !collapsed && <div className="sidebar-overlay" onClick={toggleSidebar}></div>}
 
-      {/* Floating toggle button for mobile */}
-      {collapsed && isMobile && (
+      {/* Floating Toggle Button - MOBILE only */}
+      {isMobile && collapsed && (
         <button className="floating-toggle-btn" onClick={toggleSidebar}>
           <FaBars />
         </button>
