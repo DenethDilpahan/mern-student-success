@@ -17,7 +17,7 @@
   min-height: 100%;
   width: auto;
   height: auto;
-  z-index: -1;
+  z-index: 1;
   transform: translate(-50%, -50%);
   object-fit: cover;
   filter: brightness(60%);
@@ -36,7 +36,7 @@
   text-align: center;
   max-width: 800px;
   animation: fadeIn 1.5s ease-in-out;
-  z-index: 1;
+  z-index: 2;
   
 }
 
