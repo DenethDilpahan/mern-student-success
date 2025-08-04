@@ -53,11 +53,11 @@ export default function ResourceLibrary() {
         </div>
 
         <div className="demo-file">
-          <h2 className="demo-file-title">Demo file</h2>
-          <p>This content is for demonsrattion only.</p>
-          <p>You can upload PDFs, videos, Articles and Audio files here.</p>
+          <h2 className="demo-file-title">Resource Library Guide</h2>
+          <p>This section showcases sample educational materials for demonstration purposes.</p>
+          <p>You can upload and view various types of resources including <strong>PDF documents, Videos, Articles, and Audio files</strong>.</p>
+          <p>To preview an example, select <strong>Grade 8</strong> and <strong>Science</strong> from the filters above.</p>
         </div>
-
 
         {loading ? (
           <p>Loading resources...</p>
