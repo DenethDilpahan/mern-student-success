@@ -35,6 +35,8 @@ const Sidebar = ({ collapsed, toggleSidebar }) => {
   if (localStorage.getItem('role') === 'admin') navItems.push({ to: '/admin', label: 'Admin', icon: <FaTools /> });
   if (['admin', 'teacher'].includes(localStorage.getItem('role'))) navItems.push({ to: '/answer-questions', label: 'Answer Qs', icon: <FaComments /> });
 
+  const isMobile = window.innerWidth < 768;
+
   return (
     <>
       <div className={`sidebar ${collapsed ? 'collapsed' : ''}`}>
@@ -46,7 +48,7 @@ const Sidebar = ({ collapsed, toggleSidebar }) => {
 
         <nav className="sidebar-nav">
           {navItems.map((item) => (
-            <Link key={item.to} to={item.to} onClick={() => collapsed && toggleSidebar()}>
+            <Link key={item.to} to={item.to} onClick={() => isMobile && toggleSidebar()}>
               <span className="icon">{item.icon}</span>
               {!collapsed && <span className="label">{item.label}</span>}
             </Link>
@@ -61,8 +63,15 @@ const Sidebar = ({ collapsed, toggleSidebar }) => {
         </nav>
       </div>
 
-      {/* Mobile overlay when sidebar open */}
-      {collapsed && <div className="sidebar-overlay" onClick={toggleSidebar}></div>}
+      {/* Overlay for mobile */}
+      <div className="sidebar-overlay" onClick={toggleSidebar}></div>
+
+      {/* Floating toggle button for mobile */}
+      {collapsed && isMobile && (
+        <button className="floating-toggle-btn" onClick={toggleSidebar}>
+          <FaBars />
+        </button>
+      )}
     </>
   );
 };

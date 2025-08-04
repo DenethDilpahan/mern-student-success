@@ -14,10 +14,22 @@
   transition: transform 0.3s ease;
 }
 
+/* Sidebar collapsed (slides off-screen on mobile) */
 .sidebar.collapsed {
   transform: translateX(-100%);
-  width: 60px;
-  transform: translateX(0);
+}
+
+/* Desktop - collapse shrinks width */
+@media (min-width: 768px) {
+  .sidebar {
+    transform: translateX(0);
+    width: 220px;
+  }
+
+  .sidebar.collapsed {
+    transform: translateX(0);
+    width: 60px;
+  }
 }
 
 .sidebar-logo {
@@ -71,16 +83,13 @@
   text-align: center;
 }
 
-/* Hide label when sidebar is collapsed */
+/* Hide label and logo when collapsed on desktop */
 .sidebar.collapsed .sidebar-logo,
 .sidebar.collapsed .label {
   display: none;
 }
 
-/* .sidebar.collapsed .icon {
-  margin: 0 auto;
-} */
-
+/* Active nav link styling */
 .sidebar-nav .active {
   background-color: #4b5563;
 }
@@ -91,7 +100,7 @@
   padding-top: 15px;
 }
 
-/* Overlay for mobile */
+/* Overlay - only visible when sidebar is open on mobile */
 .sidebar-overlay {
   position: fixed;
   top: 0;
@@ -100,19 +109,40 @@
   height: 100%;
   background: rgba(0, 0, 0, 0.5);
   z-index: 500;
+  opacity: 1;
+  pointer-events: auto;
+  transition: opacity 0.3s ease;
 }
 
-/* Responsive behavior */
-@media (min-width: 768px) {
-  .sidebar {
-    transform: translateX(0) !important;
-  }
+/* Hide overlay when sidebar collapsed */
+.sidebar.collapsed + .sidebar-overlay {
+  opacity: 0;
+  pointer-events: none;
+}
 
-  .sidebar.collapsed {
-    width: 60px;
-  }
+/* Optional Floating Toggle Button for Mobile */
+.floating-toggle-btn {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  background-color: #1f2937;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  font-size: 1.5rem;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 1500;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  cursor: pointer;
+}
 
-  .sidebar-overlay {
-    display: none;
+/* Show toggle on mobile when sidebar is collapsed */
+@media (max-width: 767px) {
+  .sidebar.collapsed + .floating-toggle-btn {
+    display: flex;
   }
 }
