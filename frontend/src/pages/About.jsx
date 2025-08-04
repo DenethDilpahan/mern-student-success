@@ -6,7 +6,7 @@ const AboutPage = () => {
   return (
     <div className="about-container">
 
-      <section className="hero-section">
+      <section className="about-hero-section">
         <h1>🎓 Student Success Platform</h1>
         <p>Empowering students with technology to organize, learn, and grow.</p>
       </section>
