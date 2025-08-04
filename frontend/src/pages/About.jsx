@@ -5,64 +5,65 @@ import profileImage from '../assets/profile.jpg';
 const AboutPage = () => {
   return (
     <div className="about-container">
-        <section className="section about">
-        <h2>About This Project</h2>
-        <h1>Project Overview</h1>
+
+      <section className="hero-section">
+        <h1>🎓 Student Success Platform</h1>
+        <p>Empowering students with technology to organize, learn, and grow.</p>
+      </section>
+
+      <section className="section about">
+        <h2>📖 Project Overview</h2>
         <p>
-          The Student Success Platform is a full-stack web application designed to assist students in managing their academic journey through an interactive, collaborative, and resource-driven environment. 
-          The platform offers a centralized space for students to plan their studies, track progress, access educational resources, collaborate with peers, and communicate with teachers — all while being managed through a robust admin system.
-        </p>
-        <h1>Technical Architecture and Technologies Used</h1>
-        <ol>
-          <li>Frontend: React.js</li>
-          <p>The platform's user interface is built using React.js, a robust JavaScript library known for its component-based architecture and dynamic state management. React's Virtual DOM allows efficient rendering of interactive UI elements such as the collapsible Sidebar, dynamic progress bars, real-time updates in collaboration posts, and protected routing based on user roles (admin, teacher, student).</p>
-          <li>Styling & Animations: CSS & GSAP</li>
-          <p>For the visual aesthetics:</p>
-            <ul>
-              <li>CSS (Cascading Style Sheets) is used for the core layout design, responsive structures, and component-level styling. Custom reusable styles ensure consistency across all pages.</li>
-              <li>GSAP (GreenSock Animation Platform) adds smooth, professional-grade animations to interactive elements such as page transitions, floating objects, animated progress bars, and content reveals, enhancing the user experience with modern web animation standards.</li>
-            </ul>
-          <li>Backend: Node.js with Express.js</li>
-          <p>The backend is powered by Node.js using the Express.js framework. This environment facilitates efficient server-side operations, RESTful API development, user authentication (using JSON Web Tokens - JWT), CRUD operations, and secure role-based access control for Admin and Teacher functionalities.</p>
-          <p>Key Backend Operations:</p>
-            <ul>
-              <li>Authentication & Authorization using JWT.</li>
-              <li>CRUD API Endpoints for Users, Resources, Collaboration Posts, Progress Tracking, and Admin Announcements.</li>
-              <li>Role-based Middleware to protect sensitive routes.</li>
-            </ul>
-          <li> Database: MongoDB (NoSQL)</li>
-          <p>All application data is stored in MongoDB, a flexible NoSQL database. Collections are structured for Users, Progress Goals, Resources, Collaboration Posts, and System Announcements. MongoDB’s schema-less architecture enables fast iterations and scalability, which is essential for educational platforms with dynamically evolving data structures.</p>
-        </ol>
-        <p>
-          This platform is designed to promote self-learning, peer collaboration, and teacher guidance — all in one place.
-          For demonstration purposes, use the test accounts provided on the Login Page.
+          The Student Success Platform is a full-stack web application designed to support students in managing their academic journey through interactive tools, collaborative features, and a centralized resource library.
+          It integrates study planning, progress tracking, peer collaboration, and teacher communication within a single ecosystem — efficiently managed via an admin dashboard.
         </p>
       </section>
 
+      <section className="section tech-stack">
+        <h2>🛠️ Technology Stack</h2>
+        <div className="tech-grid">
+          <div className="tech-card">
+            <h3>Frontend – React.js</h3>
+            <p>Built with React's component-based structure for dynamic UI rendering, efficient state management, and protected routing based on user roles.</p>
+          </div>
+          <div className="tech-card">
+            <h3>Styling & Animations – CSS & GSAP</h3>
+            <p>Core layouts and responsive design handled with CSS. GSAP powers smooth animations such as page transitions and interactive elements.</p>
+          </div>
+          <div className="tech-card">
+            <h3>Backend – Node.js & Express.js</h3>
+            <p>Express.js provides a robust REST API framework with secure JWT-based authentication and role-based authorization for Admin and Teachers.</p>
+          </div>
+          <div className="tech-card">
+            <h3>Database – MongoDB</h3>
+            <p>NoSQL database architecture with collections for Users, Resources, Collaboration Posts, Progress Goals, and Announcements ensuring flexibility and scalability.</p>
+          </div>
+        </div>
+      </section>
+
       <section className="section features">
-        <h2>Features</h2>
+        <h2>✨ Key Features</h2>
         <ul>
-          <li>📚 Study Planner to organize tasks and subjects</li>
-          <li>👩‍🏫 Ask a Teacher and get answers anytime</li>
-          <li>📈 Progress Tracking to monitor your goals</li>
-          <li>🛠️ Admin Dashboard to manage platform content</li>
+          <li>📅 Study Planner to organize tasks and subjects</li>
+          <li>🧑‍🏫 Ask a Teacher anytime for academic support</li>
+          <li>📊 Progress Tracker to monitor goals and achievements</li>
+          <li>🛠️ Admin Dashboard for content management and system oversight</li>
         </ul>
       </section>
 
       <section className="section mission">
-        <h2>Our Mission</h2>
+        <h2>🚀 Our Mission</h2>
         <p>
-          To empower every student to take charge of their learning journey using modern technology
-          and support networks.
+          To empower students to take ownership of their learning journey with modern technology, fostering a culture of self-learning, collaboration, and guided mentorship.
         </p>
       </section>
 
       <section className="section credits">
-        <h2>Credits</h2>
+        <h2>👤 Project Creator</h2>
         <div className="credit-box">
           <img src={profileImage} alt="Profile" className="profile-photo" />
           <div>
-            <p>Created by <strong>Deneth Dilpahan</strong></p>
+            <p><strong>Deneth Dilpahan</strong></p>
             <p>Student & Developer</p>
           </div>
         </div>
@@ -72,6 +73,3 @@ const AboutPage = () => {
 };
 
 export default AboutPage;
-
-
-
