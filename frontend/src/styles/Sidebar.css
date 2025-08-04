@@ -16,6 +16,8 @@
 
 .sidebar.collapsed {
   transform: translateX(-100%);
+  width: 60px;
+  transform: translateX(0);
 }
 
 .sidebar-logo {
@@ -75,9 +77,9 @@
   display: none;
 }
 
-.sidebar.collapsed .icon {
+/* .sidebar.collapsed .icon {
   margin: 0 auto;
-}
+} */
 
 .sidebar-nav .active {
   background-color: #4b5563;
