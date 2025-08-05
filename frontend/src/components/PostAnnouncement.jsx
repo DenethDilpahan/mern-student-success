@@ -43,22 +43,24 @@ const PostAnnouncement = () => {
   return (
     <div className="announcement-container">
       <h2>Post Announcement</h2>
-      <form onSubmit={handleSubmit} className="announcement-form">
-        <input
-          type="text"
-          placeholder="Announcement Title"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-          required
-        />
-        <textarea
-          placeholder="Write your announcement here..."
-          value={content}
-          onChange={(e) => setContent(e.target.value)}
-          required
-        ></textarea>
-        <button type="submit">Post</button>
-      </form>
+      <div className='manageuser-form'>
+        <form onSubmit={handleSubmit} className="announcement-form">
+          <input
+            type="text"
+            placeholder="Announcement Title"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            required
+          />
+          <textarea
+            placeholder="Write your announcement here..."
+            value={content}
+            onChange={(e) => setContent(e.target.value)}
+            required
+          ></textarea>
+          <button type="submit">Post</button>
+        </form>
+      </div>
 
       <h3>All Announcements</h3>
       <ul className="announcement-list">
