@@ -1,9 +1,16 @@
 import '../styles/Home.css';
 import { Link } from 'react-router-dom';
 import React, { useEffect } from 'react';
+import { useRef } from 'react';
 import introVideo from '../assets/intro-video.mp4';
 
 function Home() {
+
+  const ref = useRef(null);
+
+  const handleClick = () => {
+    ref.current?.scrollIntoView({ behavior: 'smooth'});
+  };
 
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
@@ -59,7 +66,7 @@ function Home() {
             <h1>Your Academic Success Begins Here</h1>
             <p>Plan, Learn, Collaborate, and Track with ease using our platform.</p>
             <div className="hero-buttons">
-              <Link to="/planner" className="btn-primary">Get Started</Link>
+              <button className="btn-primary" onClick={handleClick}>Get Started</button>
               <Link to="/about" className="btn-secondary">Learn More</Link>
             </div>
           </div>
@@ -67,7 +74,7 @@ function Home() {
       </section>
 
       {/* Features Section */}
-      <section className="features-section animate-on-scroll">
+      <section ref={ref} className="features-section animate-on-scroll">
         <h2>Platform Features</h2>
         <div className="feature-boxes">
           <Link to="/planner" className="feature-box">

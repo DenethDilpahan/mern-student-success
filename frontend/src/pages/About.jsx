@@ -59,7 +59,7 @@ const AboutPage = () => {
       </section>
 
       <section className="section credits">
-        <h2>👤 Project Creator</h2>
+        <h2>🧑‍🔧 Project Creator</h2>
         <div className="credit-box">
           <img src={profileImage} alt="Profile" className="profile-photo" />
           <div>
