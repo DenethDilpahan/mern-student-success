@@ -65,7 +65,7 @@ const ManageResults = () => {
   return (
     <div>
       <h2>Manage Results</h2>
-      <div className="manageuser-form"><form onSubmit={handleSubmit}>
+      <form className="manageuser-form" onSubmit={handleSubmit}>
         <div><input type="text" placeholder="Student Name" value={studentName} onChange={(e) => setStudentName(e.target.value)} required /></div>
         <div><input type="text" placeholder="Subject" value={subject} onChange={(e) => setSubject(e.target.value)} required /></div>
         <div><input type="number" placeholder="Marks" value={marks} onChange={(e) => setMarks(e.target.value)} required /></div>
@@ -76,7 +76,7 @@ const ManageResults = () => {
         </select></div>
         <input type="number" placeholder="Year" value={year} onChange={(e) => setYear(e.target.value)} required />
         <div><button type="submit">Add Result</button></div>
-      </form></div>
+      </form>
 
       <table>
         <thead>
