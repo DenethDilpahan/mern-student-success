@@ -37,13 +37,12 @@ button:hover {
   background-color: #a04545;
 }
 
-.manageuser-form{
-  display: flex;
-  flex-direction: row;
-  position: relative;
-}
-
 form {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  align-items: center;
+  gap: 10px;
   margin-bottom: 20px;
 }
 
