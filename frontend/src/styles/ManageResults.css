@@ -47,10 +47,10 @@ form {
   margin-bottom: 20px;
 }
 
-input, select {
+.manageuser-form input, select {
   margin: 5px;
   padding: 8px;
   border: 1px solid #ccc;
   border-radius: 4px;
-  max-height: 20px;
+  max-height: 50px;
 }
