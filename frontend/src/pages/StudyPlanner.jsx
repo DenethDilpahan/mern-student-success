@@ -69,7 +69,7 @@ const StudyPlanner = () => {
   return (
     <div className="page-container">
       <div className="planner-container">
-        <h1>Study Planner</h1>
+        <h1>✏️Study Planner</h1>
 
         <div className="add-task">
           <input name="title" placeholder="Task Title" value={newTask.title} onChange={handleChange} />

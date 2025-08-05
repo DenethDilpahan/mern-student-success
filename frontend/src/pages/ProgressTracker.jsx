@@ -71,7 +71,7 @@ const ProgressTracker = () => {
   return (
     <div className="page-container">
       <div className="progress-tracker-container">
-        <h1>Progress Tracker</h1>
+        <h1>✅Progress Tracker</h1>
         <form onSubmit={handleSubmit}>
           <input
             type="text"

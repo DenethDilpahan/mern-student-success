@@ -55,7 +55,7 @@ const CollaborationZone = () => {
   return (
     <div className="page-container">
       <div className="collaboration-zone-container">
-        <Link className="link-to-mycollab" to="/my-collaborations">View My Collaborations</Link>
+        <Link className="link-to-mycollab" to="/my-collaborations">🤝View My Collaborations</Link>
         <h1>Collaboration Zone</h1>
         <form onSubmit={handleSubmit}>
           <textarea

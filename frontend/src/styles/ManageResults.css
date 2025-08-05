@@ -37,6 +37,12 @@ button:hover {
   background-color: #a04545;
 }
 
+.manageuser-form{
+  display: flex;
+  flex-direction: row;
+  position: relative;
+}
+
 form {
   margin-bottom: 20px;
 }
@@ -46,4 +52,5 @@ input, select {
   padding: 8px;
   border: 1px solid #ccc;
   border-radius: 4px;
+  max-height: 20px;
 }

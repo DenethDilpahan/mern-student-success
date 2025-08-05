@@ -15,7 +15,7 @@ const AdminDashboard = () => {
   return (
     <div className="admin-container">
       <div className="admin-inner">
-        <h1 className="admin-title">Admin Dashboard</h1>
+        <h1 className="admin-title">📊Admin Dashboard</h1>
         <p className="admin-welcome">Welcome back, <span className="admin-username">{username}</span> 👋</p>
 
         <div className="card-grid">

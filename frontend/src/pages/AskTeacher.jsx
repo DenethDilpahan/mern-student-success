@@ -43,7 +43,7 @@ const AskTeacher = () => {
   return (
     <div className="page-container">
       <div className="ask-teacher-container">
-        <h1>Ask a Teacher</h1>
+        <h1>💬Ask a Teacher</h1>
         <form onSubmit={handleSubmit}>
           <textarea
             rows="4"
