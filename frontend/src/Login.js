@@ -75,7 +75,7 @@ export default function Login() {
             <p><strong>User Account:</strong></p>
             <ul>
               <li>Email: nisal@gmail.com</li>
-              <li>Password: Nisal@Nisal</li>
+              <li>Password: Nisal</li>
             </ul>
             <p>
               <a href="/about" style={{ color: '#007BFF', textDecoration: 'underline' }}>
