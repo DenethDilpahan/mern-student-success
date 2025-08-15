@@ -9,11 +9,12 @@ export default function ResourceLibrary() {
 
   const grades = ["Grade 6", "Grade 7", "Grade 8", "Grade 9", "Grade 10", "Grade 11"];
   const subjects = ["Math", "Science", "English", "History", "Sinhala", "Buddhism", "B.Sub 1", "B.Sub 2", "B.Sub 3"];
+  const API_BASE = process.env.REACT_APP_API_BASE;
 
   useEffect(() => {
     if (grade && subject) {
       setLoading(true);
-      fetch(`http://localhost:5000/api/resources?grade=${grade}&subject=${subject}`)
+      fetch(`${API_BASE}/api/resources?grade=${grade}&subject=${subject}`)
         .then((res) => res.json())
         .then((data) => {
           console.log("Fetched resources:", data);
